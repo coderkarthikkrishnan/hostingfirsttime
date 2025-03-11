@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Doto:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>karthik clicks</title>
+</head>
+
+<body>
+    <header>
+        <div class="company-name">
+            <h1 id="name">Karthik Clicks </h1><sup>TM</sup>
+        </div>
+
+        <div class="navigate">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" id="home">
+
+        <div class="home-text">
+            <h1>Hi ! am </h1>
+            <h1>Karthik Krishnan.</h1>
+            <div class="plin">
+                <p id="line">|</p>
+                <p>Capturing moments of world in pixels🍃🪄</p>
+            </div>
+
+        </div>
+        <div class="home-image">
+            <img src="facewithout.png" alt="this is an image">
+        </div>
+    </div>
+    <div class="container" id="about">
+        <div class="home-text">
+            <h1>About</h1>
+            <hr>
+            <p>
+                Hello and welcome to Karthik Clicks! I’m Karthik Krishnan, an enthusiastic hobbyist photographer. My
+                love for
+                photography began as a personal pursuit to capture the beauty around me. What started as a passion has
+                now become a way
+                for me to share the moments I find fascinating through my lens.
+
+            </p>
+            <p>Whether you're here to enjoy the images or to see my progress as I develop my craft, I hope my work
+                resonates with you
+                and sparks an appreciation for the art of photography.</p>
+        </div>
+
+    </div>
+
+    <div class="container-1" id="contact">
+
+        <div class="contact-form">
+            <form id="submit-form">
+                <div class="form-heading">
+                    <h2 id="h2">CONTACT ME</h2>
+                    <p id="p">Let's get connected.</p>
+                </div>
+                <div class="input-fields">
+                    <div class="half-width">
+                        <input type="text" placeholder="Firstname" name="firstname" required>
+                    </div>
+                    <div class="half-width">
+                        <input type="text" placeholder="Surname" name="surname" required>
+                    </div>
+                    <div class="full-width">
+                        <input type="text" placeholder="Mobile number or E-mail address" name="contact" required>
+                    </div>
+                    <div class="full-width">
+                        <textarea id="longText" placeholder="How can I help you..." name="message" required></textarea>
+                    </div>
+                    <!-- Honeypot Field -->
+                    <div class="signup-btn">
+                        <div class="main-btn">
+                            <input type="submit" value="Sign Up" class="btn-input">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $("#submit-form").submit((e) => {
+                e.preventDefault(); // Prevent default form submission
+
+                // Disable submit button and show loading feedback
+                let submitButton = $("#submit-form input[type='submit']");
+                submitButton.prop("disabled", true).val("Submitting...");
+
+                // Send the AJAX request
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbz7JC7QT5rK_j9lzHjXdSebxGFh3Zy7LzwyQkprh9AEN1FeYkGD2hNmiphJB4Tilqad/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "POST",
+                    success: function (response) {
+                        alert("Form submitted successfully!");
+                        $("#submit-form")[0].reset(); // Clear form
+                    },
+                    error: function (err) {
+                        console.error("Error:", err);
+                        alert("Something went wrong. Please try again.");
+                    },
+                    complete: function () {
+                        // Re-enable submit button
+                        submitButton.prop("disabled", false).val("Sign Up");
+                    }
+                });
+            });
+        </script>
+
+</body>
+
+</html>
